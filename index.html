@@ -207,13 +207,43 @@
       color: #5c4a8c;
     }
     .result-desc {
-      font-size: 14.5px;
-      color: #6b6090;
-      line-height: 1.85;
       background: rgba(237,232,245,0.45);
       border-radius: 14px;
       padding: 18px 20px;
       margin: 20px 0;
+    }
+    .desc-analysis {
+      font-size: 14.5px;
+      color: #6b6090;
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .desc-game-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #9280b8;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .desc-game-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .desc-game-tags span {
+      background: linear-gradient(135deg, rgba(200,165,232,0.22), rgba(142,197,252,0.22));
+      border: 1.5px solid #d8c8f0;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #5c4a8c;
+    }
+    .desc-also {
+      font-size: 12.5px;
+      color: #a898c8;
+      line-height: 1.6;
     }
     .traits { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
     .trait {
@@ -474,7 +504,7 @@
       <button class="btn-primary" onclick="restartQuiz()">🔄 다시 테스트하기</button>
       <p class="sheets-status" id="sheets-status"></p>
       <div class="sheets-guide">
-        테스트에 응해주셔서 감사합니다!<br>
+        테스트에 응해주셔서 감사합니다 😊<br>
         테스트 결과를 확인 후 시몬과 율리가 보드게임을 선정하겠습니다!
       </div>
     </div>
@@ -619,7 +649,7 @@ const RESULTS = {
     title: "심리전의 달인",
     subtitle: "눈빛만으로 상대의 속마음을 꿰뚫는 타입",
     game: "🐺 한밤의 늑대인간 / 바퀴벌레 포커",
-    desc: "사람의 심리를 읽는 능력이 탁월해요! 8명이 마을 주민과 늑대인간으로 나뉘어 속고 속이는 '한밤의 늑대인간'이 딱 맞아요. 소수 정예로 즐기기엔 '바퀴벌레 포커'로 치열한 1:1 블러핑을 즐겨봐요. 스파이폴, 인디언포커도 강추!",
+    desc: `<p class="desc-analysis">표정 하나, 말투 하나에서 진심을 읽어내는 능력이 탁월해요. 적절한 타이밍에 블러핑으로 상대를 흔들고, 아군인 척 접근해 결정적인 순간에 판을 뒤집는 게 특기입니다.</p><p class="desc-game-label">🎲 찰떡 추천 게임</p><div class="desc-game-tags"><span>🐺 한밤의 늑대인간</span><span>🪲 바퀴벌레 포커</span></div><p class="desc-also">+ 스파이폴, 마스크맨, 인디언포커도 강추!</p>`,
     traits: ["탁월한 눈치", "뛰어난 연기력", "냉철한 판단력", "타이밍 감각"],
     gameInfo: [
       { name: "🐺 한밤의 늑대인간", meta: "6명 이상 · 20–40분 · 난이도 ★★☆",
@@ -637,7 +667,7 @@ const RESULTS = {
     title: "타고난 명탐정",
     subtitle: "단서 하나도 허투루 보지 않는 추리의 신",
     game: "🗝️ 코드네임 / 스파이폴",
-    desc: "논리적 사고와 꼼꼼한 분석이 최강 무기! 8명이 두 팀으로 나뉘어 단어 힌트로 스파이를 찾는 '코드네임'과, 질문과 답변으로 스파이를 색출하는 '스파이폴'이 딱 맞아요. 카멜레온, 당신은 탐정입니다도 꼭 도전해보세요!",
+    desc: `<p class="desc-analysis">논리적 사고와 꼼꼼한 분석이 최강 무기! 흩어진 단서들을 하나씩 연결해 진실에 다가가는 과정을 즐기는 타입이에요. 아무도 보지 못한 것을 먼저 발견할 때 짜릿함을 느낍니다.</p><p class="desc-game-label">🎲 찰떡 추천 게임</p><div class="desc-game-tags"><span>🗝️ 코드네임</span><span>🕶️ 스파이폴</span></div><p class="desc-also">+ 카멜레온, 당신은 탐정입니다도 꼭 도전해보세요!</p>`,
     traits: ["날카로운 관찰력", "논리적 사고", "꼼꼼한 기록", "정보 분석력"],
     gameInfo: [
       { name: "🗝️ 코드네임", meta: "4명 이상 · 30분 · 난이도 ★★☆",
@@ -655,7 +685,7 @@ const RESULTS = {
     title: "번개 반응속도의 소유자",
     subtitle: "생각보다 손이 먼저 나가는 순발력 챔피언",
     game: "🎴 도블 / 할리갈리",
-    desc: "생각보다 손이 먼저 나가는 타입! 8명이 동시에 같은 그림을 찾아 외치는 '도블'과, 과일 5개가 보이는 순간 종을 치는 '할리갈리'에서 진가를 발휘해요. 타코 캣 고트 치즈 피자, 5초준다, 텀블링몽키도 즐겨봐요!",
+    desc: `<p class="desc-analysis">생각보다 손이 먼저 나가는 타입! 빠른 판단과 즉각적인 반응이 최강 무기예요. 규칙 설명이 끝나기 전에 이미 몸이 먼저 반응하는 타고난 순발력의 소유자입니다.</p><p class="desc-game-label">🎲 찰떡 추천 게임</p><div class="desc-game-tags"><span>🎴 도블</span><span>🔔 할리갈리</span></div><p class="desc-also">+ 타코 캣 고트 치즈 피자, 5초준다, 텀블링몽키도 즐겨봐요!</p>`,
     traits: ["초고속 반응속도", "직관적 판단", "강한 집중력", "끝없는 승부욕"],
     gameInfo: [
       { name: "🎴 도블", meta: "2–8명 · 15분 · 난이도 ★☆☆",
@@ -673,7 +703,7 @@ const RESULTS = {
     title: "치밀한 전략가",
     subtitle: "한 수 앞을 내다보며 판을 지배하는 타입",
     game: "⛏️ 사보타지 / 뱅!",
-    desc: "한 수, 두 수 앞을 내다보는 전략의 달인! 광부팀 vs 방해꾼으로 나뉘어 두뇌 싸움을 벌이는 '사보타지'와, 역할을 숨기고 싸우는 서부극 '뱅!'이 딱 맞아요. 코드네임, 젝스님트도 함께 즐겨보세요!",
+    desc: `<p class="desc-analysis">한 수, 두 수 앞을 내다보는 전략의 달인! 자원을 효율적으로 관리하고 장기 계획으로 상대를 압도해요. 게임 시작부터 끝 그림을 그려두는 타입입니다.</p><p class="desc-game-label">🎲 찰떡 추천 게임</p><div class="desc-game-tags"><span>⛏️ 사보타지</span><span>🤠 뱅!</span></div><p class="desc-also">+ 코드네임, 젝스님트도 함께 즐겨보세요!</p>`,
     traits: ["장기적 사고", "전략적 판단", "계획 실행력", "냉정한 분석"],
     gameInfo: [
       { name: "⛏️ 사보타지 (Saboteur)", meta: "3–10명 · 30분 · 난이도 ★★☆",
@@ -691,7 +721,7 @@ const RESULTS = {
     title: "팀의 심장",
     subtitle: "혼자보다 함께할 때 더 빛나는 협동의 달인",
     game: "📺 탑텐TV / 저스트원",
-    desc: "혼자 이기는 것보다 함께 이기는 게 더 기쁜 당신! 팀 전체가 1~10 순위를 맞추는 '탑텐TV'와, 힌트를 모아 단어를 맞히는 협동 게임 '저스트원'에서 팀워크를 폭발시켜요. 이매진, 텔레스트레이션도 강추!",
+    desc: `<p class="desc-analysis">혼자 이기는 것보다 함께 이기는 게 더 기쁜 당신! 팀원의 강점을 살리고 소통을 이끄는 리더십이 빛나요. 팀이 잘 굴러가도록 뒤에서 조율하는 진짜 MVP입니다.</p><p class="desc-game-label">🎲 찰떡 추천 게임</p><div class="desc-game-tags"><span>📺 탑텐TV</span><span>🌟 저스트원</span></div><p class="desc-also">+ 이매진, 텔레스트레이션도 강추!</p>`,
     traits: ["강한 팀워크", "배려와 소통", "상황 조율 능력", "희생 정신"],
     gameInfo: [
       { name: "📺 탑텐TV", meta: "4–9명 · 30분 · 난이도 ★☆☆",
@@ -709,7 +739,7 @@ const RESULTS = {
     title: "파티의 주인공",
     subtitle: "어디서든 분위기를 확 살리는 에너지 폭탄",
     game: "🃏 우노 / 5초준다",
-    desc: "복잡한 규칙? 필요 없어요! 누구나 아는 '우노'로 통쾌하게 역전하고, '5초준다'로 배꼽 잡는 웃음을 선사해봐요. 텀블링몽키, 젠가, 루핑루이도 함께라면 더 신나요. 당신이 있으면 어떤 게임도 파티가 됩니다!",
+    desc: `<p class="desc-analysis">복잡한 건 필요 없어요! 어딜 가든 분위기를 확 살리고 모두를 웃게 만드는 타입이에요. 당신이 있으면 어떤 게임도 파티가 됩니다.</p><p class="desc-game-label">🎲 찰떡 추천 게임</p><div class="desc-game-tags"><span>🃏 우노</span><span>⏱️ 5초준다</span></div><p class="desc-also">+ 텀블링몽키, 젠가, 루핑루이도 함께라면 더 신나요!</p>`,
     traits: ["폭발적인 에너지", "분위기 장악력", "유연한 적응력", "함께하는 즐거움"],
     gameInfo: [
       { name: "🃏 우노 (UNO)", meta: "2–10명 · 30분 · 난이도 ★☆☆",
@@ -818,7 +848,7 @@ function showResult() {
   document.getElementById('r-type').textContent     = r.title;
   document.getElementById('r-subtitle').textContent = r.subtitle;
   document.getElementById('r-game').textContent     = `추천 게임: ${r.game}`;
-  document.getElementById('r-desc').textContent     = r.desc;
+  document.getElementById('r-desc').innerHTML       = r.desc;
   document.getElementById('r-traits').innerHTML     =
     r.traits.map(t => `<span class="trait">${t}</span>`).join('');
 
