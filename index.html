@@ -863,7 +863,16 @@ async function sendToSheets(name, ans, type, r) {
   try {
     const body = new URLSearchParams();
     body.append('entry.150478233',  name);
-    body.append('entry.1312031319', ans.join(' / '));
+    body.append('entry.221503230',  ans[0] || '');
+    body.append('entry.1226248178', ans[1] || '');
+    body.append('entry.163643542',  ans[2] || '');
+    body.append('entry.1967989224', ans[3] || '');
+    body.append('entry.505438969',  ans[4] || '');
+    body.append('entry.142924999',  ans[5] || '');
+    body.append('entry.1871514457', ans[6] || '');
+    body.append('entry.603839738',  ans[7] || '');
+    body.append('entry.1073298376', ans[8] || '');
+    body.append('entry.462888472',  ans[9] || '');
     body.append('entry.123724454',  type);
     body.append('entry.1255809463', r.title);
     body.append('entry.135090334',  r.game);
