@@ -245,6 +245,42 @@
       color: #7c6faa;
       line-height: 1.75;
     }
+    /* ── 로딩 화면 ── */
+    .loading-dice {
+      font-size: 64px;
+      display: block;
+      margin-bottom: 28px;
+      animation: diceFloat 0.8s ease-in-out infinite alternate;
+    }
+    @keyframes diceFloat {
+      from { transform: translateY(0) rotate(-8deg); }
+      to   { transform: translateY(-14px) rotate(8deg); }
+    }
+    .loading-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #5c4a8c;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .loading-dots span {
+      width: 11px;
+      height: 11px;
+      background: linear-gradient(135deg, #c8a5e8, #8ec5fc);
+      border-radius: 50%;
+      animation: dotPop 1.1s ease-in-out infinite;
+    }
+    .loading-dots span:nth-child(2) { animation-delay: 0.18s; }
+    .loading-dots span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes dotPop {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40%           { transform: translateY(-10px); opacity: 1; }
+    }
     .btn-back {
       display: block;
       margin-bottom: 10px;
@@ -294,7 +330,7 @@
           <span id="prog-pct">10%</span>
         </div>
         <div class="progress-bg">
-          <div class="progress-fill" id="prog-bar" style="width:10%"></div>
+          <div class="progress-fill" id="prog-bar" style="width:0%"></div>
         </div>
       </div>
       <p class="q-label" id="q-label">Q1.</p>
@@ -303,7 +339,18 @@
     </div>
   </div>
 
-  <!-- ③ 결과 화면 -->
+  <!-- ③ 로딩 화면 -->
+  <div class="screen" id="screen-loading">
+    <div class="card" style="text-align:center; padding: 64px 36px;">
+      <span class="loading-dice">🎲</span>
+      <p class="loading-text">당신에게 딱 맞는<br>플레이샵 게임을 찾는 중입니다...</p>
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 결과 화면 -->
   <div class="screen" id="screen-result">
     <div class="card">
       <div class="result-top">
@@ -531,7 +578,7 @@ function startQuiz() {
 function renderQ() {
   const data  = questions[curQ];
   const total = questions.length;
-  const pct   = Math.round(((curQ + 1) / total) * 100);
+  const pct   = Math.round((curQ / total) * 100);
 
   document.getElementById('prog-label').textContent = `${curQ + 1} / ${total}`;
   document.getElementById('prog-pct').textContent   = `${pct}%`;
@@ -558,10 +605,19 @@ function pick(type, text, btn) {
   scores[type]++;
   answers.push(text);
   answerTypes.push(type);
-  setTimeout(() => {
-    curQ++;
-    curQ < questions.length ? renderQ() : showResult();
-  }, 380);
+  curQ++;
+
+  if (curQ >= questions.length) {
+    document.getElementById('prog-bar').style.width = '100%';
+    document.getElementById('prog-pct').textContent = '100%';
+    document.getElementById('prog-label').textContent = `${questions.length} / ${questions.length}`;
+    setTimeout(() => {
+      show('screen-loading');
+      setTimeout(() => showResult(), 2200);
+    }, 500);
+  } else {
+    setTimeout(() => renderQ(), 380);
+  }
 }
 
 /* ── 뒤로 가기 ── */
